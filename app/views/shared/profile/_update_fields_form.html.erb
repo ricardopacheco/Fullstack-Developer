@@ -1,0 +1,11 @@
+<%= simple_form_for(form_object, method: :put, url: profile_path, html: { id: 'profile-update-form' }) do |f| %>
+  <% if f.object.errors[:base].present? %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence %>
+  <% end %>
+
+  <%= f.input :fullname, label: false %>
+  <%= f.input :email, label: false %>
+  <%= f.input :avatar_image, as: :file, label: false %>
+
+  <%= f.button :submit, I18n.t('simple_form.buttons.submit'), class: 'w-100 btn btn-primary btn-block mb-4' %>
+<% end %>

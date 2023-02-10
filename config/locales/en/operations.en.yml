@@ -1,0 +1,16 @@
+en:
+  operations:
+    base:
+      profile_not_found: "Profile not found"
+      invalid_user: "Invalid user"
+      admin_not_found: "Admin not found"
+      user_is_not_admin: "User is not admin"
+      myself: "You cannot edit your own role."
+    admin_context:
+      user_down_operation:
+        error: "Admin could not be converted to user"
+      user_up_operation:
+        error: "User could not be converted to admin"
+      import_spreadsheet_operation:
+        required: "Xlsx file is required for import."
+        invalid: "Allowed only files with xlsx extension."

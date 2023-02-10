@@ -1,0 +1,34 @@
+pt:
+  profiles:
+    update:
+      success: "Seu perfil foi atualizado com sucesso."
+    destroy:
+      error: "Seu perfil não pode ser deletado."
+      success: "Seu perfil foi deletado com sucesso."
+    update_password:
+      success: "Sua senha foi atualizada com sucesso."
+  registrations:
+    create:
+      success: "Bem vindo! Seu perfil foi criado com sucesso."
+  sessions:
+    create:
+      success: "Login realizado com êxito!"
+    destroy:
+      success: "Logout realizado com êxito!"
+  admin:
+    users:
+      create:
+        success: "Usuário criado com sucesso."
+      destroy:
+        error: "Usuário não pode ser deletado."
+        success: "Usuário deletado com sucesso."
+      update:
+        success: "Dados do usuário foram atualizados com sucesso."
+      up:
+        success: "User %{fullname} foi convertido para admin com sucesso."
+        error: "User %{fullname} não pôde ser convertido para admin."
+      down:
+        success: "User %{fullname} foi convertido para perfil com sucesso."
+        error: "User %{fullname} não pôde ser convertido para perfil."
+      import:
+        success: "Panilha importada com sucesso. Total de %{total} novos usuários adicionados."

@@ -1,0 +1,34 @@
+en:
+  profiles:
+    update:
+      success: "Your profile was successfully updated."
+    destroy:
+      error: "Your profile could not be deleted."
+      success: "Your profile was successfully deleted."
+    update_password:
+      success: "Your password was successfully updated."
+  registrations:
+    create:
+      success: "Welcome! Your profile has been successfully created."
+  sessions:
+    create:
+      success: "Signed in successfully."
+    destroy:
+      success: "Signed out successfully."
+  admin:
+    users:
+      create:
+        success: "User created successfully."
+      destroy:
+        error: "User could not be deleted."
+        success: "User deleted successfully."
+      update:
+        success: "User data was successfully updated."
+      up:
+        success: "User %{fullname} was converted to admin successfully."
+        error: "User %{fullname} could not be converted to admin."
+      down:
+        success: "User %{fullname} was converted to admin successfully."
+        error: "User %{fullname} could not be converted to profile."
+      import:
+        success: "Spreadsheet imported successfully. Total of %{total} new users added."

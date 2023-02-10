@@ -1,0 +1,25 @@
+pt:
+  simple_form:
+    "yes": "Sim"
+    "no": "Não"
+    required:
+      text: "obrigatório"
+      mark: "*"
+    error_notification:
+      default_message: "Revise os problemas abaixo:"
+    placeholders:
+      defaults:
+        email: "Email"
+        fullname: "Nome completo"
+        password: "Senha"
+        password_confirmation: "Confirme sua senha"
+        current_password: "Senha atual"
+        new_password: "Nova senha"
+        avatar_image: "Avatar"
+    hints:
+      defaults:
+        password: "Deve ter entre 6 e 128 caracteres"
+    buttons:
+      login: "Login"
+      register: "Registrar-se"
+      submit: "Enviar"

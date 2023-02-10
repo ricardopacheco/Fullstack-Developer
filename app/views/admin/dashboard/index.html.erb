@@ -1,0 +1,18 @@
+<div class="row-fluid">
+  <h1>Hello Admin: <%= current_user.fullname %>!</h1>
+</div>
+<div class="row-fluid">
+  <div class="card col-2 mb-3">
+    <div class="card-body">
+      <p class="card-text">Total of users.</p>
+      <h5 class="card-title text-center"><%= @chart.total_users %></h5>
+    </div>
+  </div>
+
+  <div class="card col-2">
+    <div class="card-body">
+      <p class="card-text">Total grouped users by role</p>
+      <%= pie_chart(@chart.render_grouped_users_by_role) %>
+    </div>
+  </div>
+</div>

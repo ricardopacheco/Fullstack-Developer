@@ -1,0 +1,7 @@
+en:
+  admin_context:
+    user_mailer:
+      welcome:
+        subject: "Congratulations %{fullname}, welcome to your platform."
+      delete:
+        subject: "Your profile was deleted from your platform."

@@ -1,0 +1,60 @@
+pt:
+  contracts:
+    errors:
+      or: "ou"
+      array?: "deve ser um array"
+      empty?: "deve ficar vazio"
+      excludes?: "não deve incluir %{value}"
+      excluded_from?:
+        arg:
+          default: "não deve ser um de: %{list}"
+          range: "não deve ser um de: %{list_left} - %{list_right}"
+      exclusion?: "não deve ser um de: %{list}"
+      eql?: "deve ser igual a %{left}"
+      not_eql?: "não deve ser igual a %{left}"
+      filled?: "deve ser preenchido"
+      format?: "está em formato inválido"
+      number?: "deve ser um número"
+      odd?: "deve ser ímpar"
+      even?: "deve ser par"
+      gt?: "deve ser maior que %{num}"
+      gteq?: "deve ser maior ou igual a %{num}"
+      hash?: "deve ser do tipo hash"
+      included_in?:
+        arg:
+          default: "deve ser um de: %{list}"
+          range: "deve ser um de: %{list_left} - %{list_right}"
+      inclusion?: "deve ser um de: %{list}"
+      includes?: "deve incluir %{value}"
+      bool?: "deve ser booleano"
+      true?: "deve ser verdadeiro"
+      false?: "deve ser falso"
+      int?: "deve ser um número inteiro"
+      float?: "deve ser um número real"
+      decimal?: "deve ser um número decimal"
+      date?: "deve ser no formato de data"
+      date_time?: "deve ser no formato de data e hora"
+      time?: "deve ser no formato de tempo"
+      key?: "é requerido"
+      attr?: "é requerido"
+      lt?: "deve ser menor que %{num}"
+      lteq?: "deve ser menor ou igual a %{num}"
+      max_size?: "tamanho não pode ser maior que %{num}"
+      min_size?: "tamanho não pode ser menor que %{num}"
+      none?: "não pode ser definido"
+      str?: "deve ser do tipo texto"
+      type?: "deve ser do tipo %{type}"
+      size?:
+        arg:
+          default: "tamanho deve ser %{size}"
+          range: "tamanho deve ser entre %{size_left} e %{size_right}"
+        value:
+          string:
+            arg:
+              default: "deve ser %{size} caracteres"
+              range: "deve ser entre %{size_left} e %{size_right} caracteres"
+      custom:
+        macro:
+          email_format: "não é um email válido"
+          fullname_format: "deve ter entre %{min} e %{max} caracteres"
+          password_format: "deve ter entre %{min} e %{max} caracteres"

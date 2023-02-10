@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Administration</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div id="admin-main-navbar" class="mt-1">
+        <%= render 'shared/profile/navbar' %>
+      </div>
+      <div id="admin-flash-messages" class="my-3">
+        <%= render "shared/global/flash_messages", flash: flash %>
+      </div>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>

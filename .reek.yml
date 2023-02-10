@@ -1,0 +1,7 @@
+detectors:
+  DuplicateMethodCall:
+    max_calls: 2
+
+exclude_paths:
+  - config/application.rb
+  - db/migrate

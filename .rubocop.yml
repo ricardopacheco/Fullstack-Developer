@@ -1,0 +1,101 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+AllCops:
+  NewCops: enable
+  Exclude:
+    - ".pryrc"
+    - ".irbrc"
+    - Rakefile
+    - "app/assets/**/*"
+    - "bin/*"
+    - "coverage/*"
+    - "spec/fixtures/**/*"
+    - "spec/**/*helper.rb"
+    - "spec/support/**/*.rb"
+    - "db/**/*.rb"
+    - "**/schema.rb"
+    - "lib/tasks/"
+  TargetRubyVersion: 3.0
+Bundler/OrderedGems:
+  Enabled: false
+Layout/ArrayAlignment:
+  Enabled: true
+Layout/HashAlignment:
+  Enabled: true
+Layout/HeredocIndentation:
+  Enabled: true
+Layout/MultilineMethodCallIndentation:
+  Enabled: true
+  EnforcedStyle: indented
+Layout/ParameterAlignment:
+  Enabled: true
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - "db/**/*.rb"
+    - "config/**/*.rb"
+Metrics/AbcSize:
+  Enabled: true
+  Max: 20
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - "config/routes.rb"
+    - "config/initializers/shrine.rb"
+    - "config/initializers/simple_form_bootstrap.rb"
+Metrics/ClassLength:
+  Enabled: true
+  Max: 150
+Metrics/MethodLength:
+  Enabled: true
+  Max: 25
+Rails:
+  Enabled: true
+Rails/EnvironmentVariableAccess:
+  Enabled: true
+Rails/FilePath:
+  Enabled: true
+  Exclude:
+    - "config/initializers/management.rb"
+Rails/InverseOf:
+  Enabled: false
+Rails/SkipsModelValidations:
+  Enabled: false
+RSpec/AnyInstance:
+  Enabled: false
+RSpec/ContextWording:
+  Enabled: false
+RSpec/ExampleLength:
+  Enabled: false
+RSpec/LetSetup:
+  Enabled: false
+RSpec/MessageChain:
+  Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+RSpec/NamedSubject:
+  Enabled: false
+RSpec/NestedGroups:
+  Max: 7
+Style/AndOr:
+  Enabled: false
+Style/Documentation:
+  Enabled: true
+  Exclude:
+    - "config/application.rb"
+Style/ExponentialNotation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+Style/GuardClause:
+  Enabled: true
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true

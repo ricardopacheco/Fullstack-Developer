@@ -1,0 +1,9 @@
+tmp/*
+log/*
+db/*.sqlite3
+.git
+.DS_Store
+node_modules/*
+npm-debug.log
+.env.*.local
+coverage/*

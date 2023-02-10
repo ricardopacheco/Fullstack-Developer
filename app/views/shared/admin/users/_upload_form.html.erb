@@ -1,0 +1,18 @@
+<%= simple_form_for(form_object, url: import_admin_users_path, html: { id: 'admin-users-import-form' }) do |f| %>
+  <% if f.object.errors[:base].present? %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence %>
+  <% end %>
+  <% if f.object.errors.to_hash.exclude?(:base) %>
+    <ul class="list-group mb-2">
+    <li class="list-group-item list-group-item-primary">Ocorreu os seguintes erros:</li>
+    <% f.object.errors.full_messages.each do |message| %>
+      <li class="list-group-item list-group-item-warning"><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+  <%= f.input :file, as: :file, label: false, hint: "Você pode fazer o download do template #{link_to('aqui', '/template.xlsx')}.".html_safe %>
+
+
+  <%= f.button :submit, I18n.t('submit', scope: 'simple_form.buttons'), class: 'w-100 btn btn-success btn-block' %>
+<% end %>

@@ -1,0 +1,8 @@
+database: postgres
+redis: redis-server
+mail: maildev --hide-extensions STARTTLS
+web: bundle exec puma -C config/puma.rb -p 3000
+js: yarn build --watch
+css: yarn build:css --watch
+minio: minio server ~/minio_storage
+background: bundle exec sidekiq

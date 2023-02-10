@@ -1,0 +1,14 @@
+mode_ci:
+  enabled: false
+  branch: "main"
+branch: "main"
+path: "/tmp/rubycritic"
+threshold_score: 10
+deduplicate_symlinks: true
+suppress_ratings: true
+no_browser: true
+formats:
+  - console
+minimum_score: 80
+paths:
+  - "app/"

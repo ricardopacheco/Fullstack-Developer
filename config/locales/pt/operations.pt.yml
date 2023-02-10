@@ -1,0 +1,16 @@
+pt:
+  operations:
+    base:
+      profile_not_found: "Perfil não encontrado"
+      invalid_user: "Usuário inválido"
+      admin_not_found: "Admin não encontrado"
+      user_is_not_admin: "Usuário não é um admin"
+      myself: "Você não pode editar a regra de si mesmo."
+    admin_context:
+      user_down_operation:
+        error: "Admin não pôde ser convertido em um usuário."
+      user_up_operation:
+        error: "Usuário não pôde ser convertido em um admin."
+      import_spreadsheet_operation:
+        required: "Arquivo xlsx é requerido para importação."
+        invalid: "Somente arquivos com extensão xlsx são permitidos."

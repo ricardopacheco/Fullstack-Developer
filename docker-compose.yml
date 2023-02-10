@@ -1,0 +1,82 @@
+version: "3.9"
+
+volumes:
+  postgres-data:
+    driver: local
+  gems-data:
+    driver: local
+  minio-data:
+    driver: local
+  redis-data:
+    driver: local
+
+services:
+  database:
+    container_name: database
+    image: postgres:15.1
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - ".:/usr/src/app"
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  maildev:
+    container_name: maildev
+    image: maildev/maildev
+    ports:
+      - "1025:1025"
+      - "1080:1080"
+  redis:
+    container_name: redis
+    image: redis:7.0.8
+    volumes:
+      - ".:/usr/src/app"
+      - redis-data:/data
+    command: redis-server
+    ports:
+      - "6379:6379"
+  minio:
+    container_name: minio
+    image: minio/minio:latest
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+    volumes:
+      - ".:/usr/src/app"
+      - "minio-data:/data"
+    env_file: .env.development.local
+    command: server /data --console-address ":9001"
+  app:
+    container_name: app
+    build: .
+    command: bundle exec puma -C ./config/puma.rb
+    volumes:
+      - ".:/usr/src/app"
+      - gems-data:/usr/local/bundle
+    ports:
+      - "3000:3000"
+    depends_on:
+      - minio
+      - database
+      - maildev
+    stdin_open: true
+    env_file: .env.development.local
+    tty: true
+
+networks:
+  management:
+    name: management
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: management
+    external: true

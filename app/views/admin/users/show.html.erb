@@ -1,0 +1,59 @@
+<div class="row-fluid">
+  <div class="card mb-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-3">
+          <p class="mb-0">Photo</p>
+        </div>
+        <div class="col-sm-9">
+          <%= image_tag(@user.avatar_image_url(:small)) if @user.avatar_image.present? %>
+        </div>
+      </div>
+      <hr />
+
+      <div class="row">
+        <div class="col-sm-3">
+          <p class="mb-0">Full Name</p>
+        </div>
+        <div class="col-sm-9">
+          <p class="text-muted mb-0"><%= @user.fullname %></p>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-3">
+          <p class="mb-0">Email</p>
+        </div>
+        <div class="col-sm-9">
+          <p class="text-muted mb-0"><%= @user.email %></p>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-3">
+          <p class="mb-0">Role</p>
+        </div>
+        <div class="col-sm-9">
+          <p class="text-muted mb-0">
+            <span class="badge bg-<%= @user.admin? ? 'primary' : 'secondary' %>"><%= @user.role %></span>
+          </p>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-3">
+          <p class="mb-0">Actions</p>
+        </div>
+        <div class="col-sm-9">
+          <%= link_to 'Editar usuário <i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_admin_user_path(@user.id), class: "btn btn-outline-primary" %>
+          <% if @user.admin? %>
+            <%= link_to "Convert to profile", down_admin_user_path(@user.id), method: :put, class: 'btn btn-outline-warning' %>
+          <% else %>
+            <%= link_to "Convert to admin", up_admin_user_path(@user.id), method: :put, class: 'btn btn-outline-info' %>
+          <% end %>
+          <%= link_to 'Excluir usuário <i class="fa-sharp fa-solid fa-trash"></i>'.html_safe, admin_user_path(@user.id), method: :delete, class: "btn btn-outline-danger", data: { confirm: 'Are you sure? This action is irreversible' } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

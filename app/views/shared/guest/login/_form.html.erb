@@ -1,0 +1,9 @@
+<%= simple_form_for(form_object, url: login_path, html: { id: 'new-login' }) do |f| %>
+  <% if f.object.errors[:base].present? %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence %>
+  <% end %>
+
+  <%= f.input :email, label: false %>
+  <%= f.input :password, label: false %>
+  <%= f.button :submit, I18n.t('login', scope: 'simple_form.buttons'), class: 'w-100 btn btn-success btn-block' %>
+<% end %>

@@ -1,0 +1,8 @@
+<%= simple_form_for(form_object, url: admin_users_path, html: { id: 'admin-users-new-form' }) do |f| %>
+  <% if f.object.errors[:base].present? %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence %>
+  <% end %>
+  <%= f.input :fullname, label: false %>
+  <%= f.input :email, label: false %>
+  <%= f.button :submit, I18n.t('submit', scope: 'simple_form.buttons'), class: 'w-100 btn btn-success btn-block' %>
+<% end %>

@@ -1,0 +1,25 @@
+en:
+  simple_form:
+    "yes": "Yes"
+    "no": "No"
+    required:
+      text: "required"
+      mark: "*"
+    error_notification:
+      default_message: "Please review the problems below:"
+    placeholders:
+      defaults:
+        email: "Email"
+        fullname: "Full Name"
+        password: "Password"
+        password_confirmation: "Confirm your password"
+        current_password: "Current password"
+        new_password: "New password"
+        avatar_image: "Avatar"
+    hints:
+      defaults:
+        password: "Must be between 6 e 128 characters"
+    buttons:
+      login: "Sign In"
+      register: "Sign Up"
+      submit: "Submit"

@@ -1,0 +1,16 @@
+en:
+  shrine:
+    errors:
+      file:
+        max_size: "exceeds the maximum size of %{max}"
+        min_size: "cannot be less than %{min}"
+        max_width: "exceeds the maximum width of %{max}"
+        min_width: "cannot have a width smaller than %{min}"
+        max_height: "exceeds the maximum height of %{max}"
+        min_height: "cannot have a height smaller than %{min}"
+        max_dimensions: "exceeds the maximum dimensions limit set of %{dims}"
+        min_dimensions: "cannot have a dimension smaller than %{dims}"
+        mime_type_inclusion: "upload of this type of file is not allowed. Allowed: %{list}"
+        mime_type_exclusion: "is on the list of files not allowed for upload. Excluded: %{list}"
+        extension_inclusion: "upload of files with this extension is not allowed. Allowed: %{list}"
+        extension_exclusion: "upload of files with this extension is not allowed. Excluded: %{list}"
