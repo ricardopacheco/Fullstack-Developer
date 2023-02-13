@@ -12,8 +12,8 @@ describe 'Dashboard', type: :feature do
 
   describe 'After admin logged in' do
     it 'expect see some stats' do
-      expect(page).to have_content('Total of users')
-      expect(page).to have_content('Total grouped users by role')
+      expect(page).to have_content(I18n.t('views.admin.dashboard.total_users'))
+      expect(page).to have_content(I18n.t('views.admin.dashboard.total_grouped'))
     end
   end
 end

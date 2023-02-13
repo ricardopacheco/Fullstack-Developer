@@ -1,8 +1,7 @@
 <div class="row-fluid">
   <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Atenção!</strong>
-    A panilha será importada de forma transacional, ou seja, se algum erro ocorrer durante o processo,
-    nenhuma alteração será feita no banco de dados.
+    <strong><%= I18n.t('views.admin.users.heads_up') %>!</strong>
+    <%= I18n.t('views.admin.users.upload.message') %>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 

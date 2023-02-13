@@ -1,0 +1,7 @@
+pt:
+  views:
+    guest:
+      sign_in: "Login"
+      sign_up: "Registrar-se"
+      registration:
+        title: "Crie um perfil"

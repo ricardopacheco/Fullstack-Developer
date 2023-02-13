@@ -12,7 +12,7 @@ describe 'Delete Own Profile', type: :feature do
 
   describe 'When the user can delete own profile' do
     it 'expect delete and redirect' do
-      click_on 'Excluir perfil'
+      click_on(id: 'navbar-profile-btn-delete')
 
       expect(page).to have_content(I18n.t('profiles.destroy.success'))
       expect(page).to have_current_path(root_path)
@@ -26,7 +26,7 @@ describe 'Delete Own Profile', type: :feature do
     end
 
     it 'expect see error message' do
-      click_on 'Excluir perfil'
+      click_on(id: 'navbar-profile-btn-delete')
 
       expect(page).to have_content(I18n.t('profiles.destroy.error'))
     end

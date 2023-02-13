@@ -20,13 +20,15 @@
 
         <div class="card bg-glass">
           <div class="card-body px-4 py-5 px-md-5">
-            <h1 class="text-center">Create a profile</h1>
+            <h1 class="text-center"><%= I18n.t('views.guest.registration.title') %></h1>
 
             <%= @presenter.render_register_form %>
 
             <hr />
 
-            <a href="<%= root_path %>" class="w-100 btn btn-primary btn-block">Login</a>
+            <a href="<%= root_path %>" class="w-100 btn btn-primary btn-block">
+              <%= I18n.t('views.guest.sign_in') %>
+            </a>
           </div>
         </div>
       </div>

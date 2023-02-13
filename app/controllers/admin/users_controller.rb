@@ -7,11 +7,11 @@ module Admin
     before_action :find_user, only: %i[show edit update destroy up down]
 
     def index
-      @users = User.all
+      @users = AdminContext::UserDecorator.wrap(User.all, current_user)
     end
 
     def show
-      @user = User.find(params[:id])
+      @user = AdminContext::UserDecorator.new(User.find(params[:id]), current_user)
     end
 
     def new

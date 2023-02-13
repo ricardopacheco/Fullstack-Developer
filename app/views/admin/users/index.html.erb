@@ -2,10 +2,10 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Fullname</th>
-      <th scope="col">Email</th>
-      <th scope="col">Role</th>
-      <th scope="col">Actions</th>
+      <th scope="col"><%= I18n.t('activerecord.attributes.user.fullname') %></th>
+      <th scope="col"><%= I18n.t('activerecord.attributes.user.email') %></th>
+      <th scope="col"><%= I18n.t('activerecord.attributes.user.role') %></th>
+      <th scope="col"><%= I18n.t('views.admin.users.actions') %></th>
     </tr>
   </thead>
   <tbody>
@@ -14,25 +14,16 @@
         <th scope="row"><%= link_to user.id, admin_user_path(user.id) %></th>
         <td><%= user.fullname %></td>
         <td><%= user.email %></td>
-        <% if user.admin? %>
-          <td><span class="badge bg-primary"><%= user.role %></span></td>
-        <% else %>
-          <td><span class="badge bg-secondary"><%= user.role %></span></td>
-        <% end %>
+        <td><%= user.badge_role %></td>
         <td>
-          <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_admin_user_path(user.id), class: "btn btn-outline-primary" %>
-          <% if user.admin? %>
-            <%= link_to "Convert to profile", down_admin_user_path(user.id), method: :put, class: 'btn btn-outline-warning' %>
-          <% else %>
-            <%= link_to "Convert to admin", up_admin_user_path(user.id), method: :put, class: 'btn btn-outline-info' %>
-          <% end %>
-
-          <%= link_to '<i class="fa-sharp fa-solid fa-trash"></i>'.html_safe, admin_user_path(user.id), method: :delete, class: "btn btn-outline-danger", data: { confirm: 'Are you sure? This action is irreversible' } %>
+          <%= user.link_to_edit %>
+          <%= user.link_to_convert %>
+          <%= user.link_to_delete %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to "Adicionar novo usuário", new_admin_user_path, class: "btn btn-outline-primary" %>
-<%= link_to "Importar panilha", upload_admin_users_path, class: "btn btn-outline-success" %>
+<%= link_to I18n.t('views.admin.users.index.add'), new_admin_user_path, class: "btn btn-outline-primary" %>
+<%= link_to I18n.t('views.admin.users.index.import'), upload_admin_users_path, class: "btn btn-outline-success" %>

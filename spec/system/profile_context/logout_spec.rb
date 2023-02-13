@@ -12,7 +12,7 @@ describe 'Logout', type: :feature do
     end
 
     it 'expect logout and redirect to guest root path' do
-      click_on 'Logout'
+      click_on(id: 'navbar-profile-btn-logout')
 
       expect(page).to have_content(I18n.t('sessions.destroy.success'))
     end

@@ -1,8 +1,7 @@
 <div class="row-fluid">
   <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Atenção!</strong>
-    O sistema irá gerar uma senha aleatória para o usuário por razões de segurança.
-    Após cadastrar, mandaremos um email para ele com um link para que ele possa definir sua senha.
+    <strong><%= I18n.t('views.admin.users.heads_up') %>!</strong>
+    <%= I18n.t('views.admin.users.new.message') %>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 

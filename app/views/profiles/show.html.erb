@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-center">
+  <div class="card">
+    <%= @user.image_tag_avatar(:large) %>
+    <div class="card-body">
+      <h5 class="card-title"><%= @user.fullname %></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= @user.email %></h6>
+
+      <%= @user.edit_profile_link %>
+      <%= @user.link_to_change_password %>
+      <%= @user.link_to_delete %>
+    </div>
+  </div>
+</div>
+

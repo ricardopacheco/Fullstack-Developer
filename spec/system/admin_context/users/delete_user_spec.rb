@@ -19,7 +19,7 @@ describe 'Delete a user', type: :feature do
     end
 
     it 'expect redirect to list all users without deleted user' do
-      click_on 'Excluir usuário' # I18n.t('submit', scope: 'simple_form.buttons')
+      click_on(id: 'admin-btn-delete-user')
 
       expect(page).to have_content(I18n.t('admin.users.destroy.error'))
       expect(page).to have_current_path(edit_admin_user_path(user.id))
@@ -28,7 +28,7 @@ describe 'Delete a user', type: :feature do
 
   describe 'When admin can delete a user' do
     it 'expect redirect to list all users without deleted user' do
-      click_on 'Excluir usuário' # I18n.t('submit', scope: 'simple_form.buttons')
+      click_on(id: 'admin-btn-delete-user')
 
       expect(page).to have_content(I18n.t('admin.users.destroy.success'))
       expect(page).to have_current_path(admin_users_path)

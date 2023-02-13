@@ -1,0 +1,6 @@
+en:
+  views:
+    profile:
+      change_password: "Change password"
+      edit_profile: "Edit profile"
+      delete_profile: "Delete profile"

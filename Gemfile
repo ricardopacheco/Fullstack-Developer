@@ -48,6 +48,9 @@ gem 'sidekiq'
 # Frontend tool: Charts
 gem 'chartkick', '5.0.1'
 
+# Decorator pattern
+gem 'burgundy', '1.0.0'
+
 group :development do
   gem 'brakeman', '5.4.0'
   gem 'overcommit', '0.60.0'

@@ -1,0 +1,13 @@
+en:
+  views:
+    admin:
+      users:
+        heads_up: "Heads up!"
+        actions: "Actions"
+        index:
+          add: "Add new user"
+          import: "Import spreadsheet"
+        new:
+          message: "The system will generate a random password for the user for security reasons. After registering, we will send him an email with a link so he can define his password."
+        upload:
+          message: "The spreadsheet will be imported transactionally, that is, if an error occurs during the process, no changes will be made to the database."

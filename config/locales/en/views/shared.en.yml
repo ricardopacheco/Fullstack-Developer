@@ -1,0 +1,14 @@
+en:
+  views:
+    shared:
+      admin:
+        users:
+          navbar:
+            list_users: "Users"
+            sign_out: "Logout"
+          upload_form:
+            error_title: "The following errors occurred"
+            file_hint: "You can make download of template %{link}"
+      profile:
+        navbar:
+          sign_out: "Logout"

@@ -1,0 +1,14 @@
+pt:
+  views:
+    shared:
+      admin:
+        users:
+          navbar:
+            list_users: Usuários
+            sign_out: "Sair"
+          upload_form:
+            error_title: "Ocorreu os seguintes erros"
+            file_hint: "Você pode fazer o download do template %{link}"
+      profile:
+        navbar:
+          sign_out: "Sair"

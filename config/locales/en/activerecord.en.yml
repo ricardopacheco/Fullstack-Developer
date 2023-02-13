@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    attributes:
+      user:
+        fullname: "Full name"
+        email: Email
+        role: Role
+        avatar_image: Avatar

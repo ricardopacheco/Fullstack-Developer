@@ -19,7 +19,7 @@ describe 'Convert user admin in a user profile', type: :feature do
     end
 
     it 'expect not change user role and show error message' do
-      click_on 'Convert to profile' # I18n.t('submit', scope: 'simple_form.buttons')
+      click_on(id: 'admin-btn-convert-admin-to-profile')
 
       expect(page).to have_current_path(edit_admin_user_path(user.id))
       expect(page).to have_content(I18n.t('admin.users.down.error', fullname: user.fullname))
@@ -28,7 +28,7 @@ describe 'Convert user admin in a user profile', type: :feature do
 
   describe 'When admin can convert user' do
     it 'expect change user role from admin to profile' do
-      click_on 'Convert to profile' # I18n.t('submit', scope: 'simple_form.buttons')
+      click_on(id: 'admin-btn-convert-admin-to-profile')
 
       expect(page).to have_current_path(admin_user_path(user.id))
       expect(page).to have_content(I18n.t('admin.users.down.success', fullname: user.fullname))

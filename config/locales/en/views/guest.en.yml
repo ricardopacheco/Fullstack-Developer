@@ -1,0 +1,7 @@
+en:
+  views:
+    guest:
+      sign_in: "Sign In"
+      sign_up: "Sign Up"
+      registration:
+        title: "Create a profile"

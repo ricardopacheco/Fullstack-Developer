@@ -1,0 +1,7 @@
+pt:
+  views:
+    admin:
+      dashboard:
+        hello: "Hello %{fullname}"
+        total_users: "Total de usuários."
+        total_grouped: "Total de usuários agrupados por regra."

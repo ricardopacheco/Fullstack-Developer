@@ -6,11 +6,14 @@ class ProfilesController < ApplicationController
 
   layout 'profile'
 
-  def show; end
+  def show
+    @user = ProfileContext::UserDecorator.new(current_user)
+  end
 
   def edit
     attributes = current_user.attributes.slice('fullname', 'email')
 
+    @user = ProfileContext::UserDecorator.new(current_user)
     @presenter = presenter_class.new(
       view_context, current_user, form_object: profile_fields_form.new(attributes)
     )
@@ -22,6 +25,7 @@ class ProfilesController < ApplicationController
     if form.submit(current_user.id)
       redirect_to profile_root_path, notice: t('.success')
     else
+      @user = ProfileContext::UserDecorator.new(current_user)
       @presenter = presenter_class.new(view_context, current_user, form_object: form)
 
       render :edit
@@ -39,6 +43,7 @@ class ProfilesController < ApplicationController
   end
 
   def change_password
+    @user = ProfileContext::UserDecorator.new(current_user)
     @presenter = presenter_class.new(view_context, current_user, form_object: update_password_form.new)
   end
 
@@ -48,6 +53,7 @@ class ProfilesController < ApplicationController
     if form.submit(current_user.id)
       redirect_to profile_root_path, notice: t('.success')
     else
+      @user = ProfileContext::UserDecorator.new(current_user)
       @presenter = presenter_class.new(view_context, current_user, form_object: form)
 
       render :change_password

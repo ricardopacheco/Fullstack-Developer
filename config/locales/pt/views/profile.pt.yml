@@ -1,0 +1,6 @@
+pt:
+  views:
+    profile:
+      change_password: "Atualizar senha"
+      edit_profile: "Editar perfil"
+      delete_profile: "Deletar perfil"

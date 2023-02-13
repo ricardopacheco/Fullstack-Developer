@@ -1,0 +1,8 @@
+pt:
+  activerecord:
+    attributes:
+      user:
+        fullname: "Nome Completo"
+        email: Email
+        role: Regra
+        avatar_image: Avatar

@@ -1,0 +1,6 @@
+pt:
+  decorators:
+    admin_context:
+      users:
+        convert_to_admin: "Converter para admin"
+        convert_to_profile: "Converter para perfil"

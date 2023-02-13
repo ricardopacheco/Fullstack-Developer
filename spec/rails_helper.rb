@@ -3,10 +3,13 @@ require 'simplecov'
 if ENV['CI']
   SimpleCov.start('rails') do
     add_group 'Contracts', 'app/contracts'
+    add_group 'Decorators', 'app/decorators'
     add_group 'Forms', 'app/forms'
     add_group 'Operations', 'app/operations'
     add_group 'Presenters', 'app/presenters'
     add_group 'Uploaders', 'app/uploaders'
+
+    add_filter 'Libraries'
   end
 end
 

@@ -1,0 +1,13 @@
+pt:
+  views:
+    admin:
+      users:
+        actions: "Ações"
+        heads_up: "Atenção"
+        index:
+          add: "Adicionar novo usuário"
+          import: "Importar panilha"
+        new:
+          message: "O sistema irá gerar uma senha aleatória para o usuário por razões de segurança. Após cadastrar, mandaremos um email para ele com um link para que ele possa definir sua senha."
+        upload:
+          message: "A panilha será importada de forma transacional, ou seja, se algum erro ocorrer durante o processo, nenhuma alteração será feita no banco de dados."
