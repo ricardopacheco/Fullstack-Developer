@@ -19,6 +19,7 @@ module AdminContext
       ActiveRecord::Base.transaction do
         yield delete_user_on_database(user)
         yield send_delete_email_to_user(user.email)
+        yield send_profile_context_delete_user_broadcast(user.id)
       end
 
       Success(nil)
@@ -28,6 +29,10 @@ module AdminContext
 
     def send_delete_email_to_user(email)
       Success(AdminContext::UserMailer.delete(email).deliver_later)
+    end
+
+    def send_profile_context_delete_user_broadcast(user_id)
+      Success(ProfileContext::DeleteUserBroadcastJob.perform_later(user_id))
     end
   end
 end

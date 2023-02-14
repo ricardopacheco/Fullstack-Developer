@@ -5,4 +5,4 @@ web: bundle exec puma -C config/puma.rb -p 3000
 js: yarn build --watch
 css: yarn build:css --watch
 minio: minio server ~/minio_storage
-background: bundle exec sidekiq
+background: bundle exec sidekiq -C config/sidekiq.yml

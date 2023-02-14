@@ -128,6 +128,14 @@ describe AdminContext::CreateUserOperation, type: :operation do
           )
         )
       end
+
+      it 'expect send broadcast event' do
+        expect do
+          operation
+        end.to(
+          have_enqueued_job(AdminContext::CreateUserBroadcastJob).on_queue('broadcast')
+        )
+      end
     end
   end
 end

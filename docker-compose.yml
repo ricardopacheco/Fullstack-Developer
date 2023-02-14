@@ -72,6 +72,19 @@ services:
     stdin_open: true
     env_file: .env.development.local
     tty: true
+  worker:
+    container_name: worker
+    image: management_app
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    volumes:
+      - ".:/usr/src/app"
+      - gems-data:/usr/local/bundle
+    depends_on:
+      - db
+      - redis
+      - maildev
+    env_file: .env.development.local
+    tty: true
 
 networks:
   management:

@@ -71,6 +71,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'action-cable-testing', '0.6.1'
   gem 'capybara', '3.38.0'
   gem 'database_cleaner-active_record', '2.0.1'
   gem 'factory_bot_rails', '6.2.0'

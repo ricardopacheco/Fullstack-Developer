@@ -20,9 +20,16 @@ module AdminContext
       ActiveRecord::Base.transaction do
         @user = yield create_user_on_database(completed_attributes)
         yield send_welcome_email_to_user(@user)
+        yield send_admin_context_create_user_broadcast(@user.id)
       end
 
       Success(@user)
+    end
+
+    private
+
+    def send_admin_context_create_user_broadcast(user_id)
+      Success(AdminContext::CreateUserBroadcastJob.perform_later(user_id))
     end
   end
 end

@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
+
+  authenticate :user, ->(u) { Rails.env.development? && u.admin? } do
+    require 'sidekiq/web'
+
+    mount Sidekiq::Web, at: '/sidekiq'
+  end
+
   devise_for :users, skip: :all
   devise_scope :user do
     # Profile user routes

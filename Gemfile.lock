@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    action-cable-testing (0.6.1)
+      actioncable (>= 5.0)
     actioncable (7.0.4.2)
       actionpack (= 7.0.4.2)
       activesupport (= 7.0.4.2)
@@ -427,6 +429,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  action-cable-testing (= 0.6.1)
   aws-sdk-s3 (= 1.119.0)
   bootsnap (= 1.16.0)
   brakeman (= 5.4.0)
