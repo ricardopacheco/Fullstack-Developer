@@ -24,9 +24,7 @@ module Admin
       @presenter = presenter_class.new(
         view_context,
         current_user,
-        form_object: AdminContext::EditUserForm.new(
-          @user.attributes.slice('fullname', 'email')
-        )
+        form_object: AdminContext::EditUserForm.new(user: @user)
       )
     end
 

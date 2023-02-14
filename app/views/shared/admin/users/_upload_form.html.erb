@@ -1,4 +1,4 @@
-<%= simple_form_for(form_object, url: import_admin_users_path, html: { id: 'admin-users-import-form' }) do |f| %>
+<%= simple_form_for(form_object, url: import_admin_users_path, html: { id: 'admin-users-import-form', class: 'with-spreadsheet-upload' }) do |f| %>
   <% if f.object.errors[:base].present? %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence %>
   <% end %>

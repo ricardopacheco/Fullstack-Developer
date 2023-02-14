@@ -397,6 +397,13 @@ binary-extensions@^2.0.0:
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
+block-ui@^2.70.1:
+  version "2.70.1"
+  resolved "https://registry.yarnpkg.com/block-ui/-/block-ui-2.70.1.tgz#c862d64ee6288fb78123377c6680bc7ab262103f"
+  integrity sha512-Hx69Bw368lQ9+zOcisvWpoHBsZi9owHQ1YBwLZXFhOMXv59VjBSHHCDWfTaByYSUoNZgTt/sjR1juEbyqwWpwQ==
+  dependencies:
+    jquery ">=1.7.x"
+
 bootstrap-icons@^1.10.3:
   version "1.10.3"
   resolved "https://registry.yarnpkg.com/bootstrap-icons/-/bootstrap-icons-1.10.3.tgz#c587b078ca6743bef4653fe90434b4aebfba53b2"
@@ -742,6 +749,11 @@ jest-worker@^27.4.5:
     "@types/node" "*"
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
+
+jquery@>=1.7.x, jquery@^3.6.3:
+  version "3.6.3"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.3.tgz#23ed2ffed8a19e048814f13391a19afcdba160e6"
+  integrity sha512-bZ5Sy3YzKo9Fyc8wH2iIQK4JImJ6R0GWI9kL1/k7Z91ZBNgkRXE6U0JfHIizZbort8ZunhSI3jw9I6253ahKfg==
 
 json-parse-even-better-errors@^2.3.1:
   version "2.3.1"

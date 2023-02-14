@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   devise_for :users, skip: :all
   devise_scope :user do
+    authenticated :user do
+      mount AvatarUserImageUploader.upload_endpoint(:cache) => '/images/upload'
+    end
+
     # Profile user routes
     authenticated :user, ->(u) { u.profile? } do
       root 'profiles#show', as: :profile_root
