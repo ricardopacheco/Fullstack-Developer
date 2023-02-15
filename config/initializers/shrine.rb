@@ -37,7 +37,6 @@ Rails.env.on(:any) do
   Shrine.plugin :derivatives, create_on_promote: true
   Shrine.plugin :determine_mime_type, analyzer: :marcel
   Shrine.plugin :cached_attachment_data
-  Shrine.plugin :default_url, host: Rails.configuration.x.default_asset_host
   Shrine.plugin :instrumentation
   Shrine.plugin :pretty_location
   Shrine.plugin :remove_attachment
@@ -45,7 +44,10 @@ Rails.env.on(:any) do
   Shrine.plugin :remote_url, max_size: GLOBAL_MAX_UPLOAD_FILE_SIZE
   Shrine.plugin :store_dimensions
   Shrine.plugin :upload_endpoint, max_size: GLOBAL_MAX_UPLOAD_FILE_SIZE
-  Shrine.plugin :url_options, host: Rails.configuration.x.default_asset_host, store: { public: true }
+  Shrine.plugin :url_options, store: {
+    host: "#{Rails.configuration.x.default_asset_host}/#{Rails.configuration.x.s3_bucket}/",
+    public: true
+  }
   Shrine.plugin :validation_helpers, default_messages: {
     max_size: ->(max) { I18n.t(:max_size, max: max, scope: SHRINE_I18N_SCOPE) },
     min_size: ->(min) { I18n.t(:min_size, min: min, scope: SHRINE_I18N_SCOPE) },

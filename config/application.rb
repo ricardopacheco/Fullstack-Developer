@@ -55,5 +55,6 @@ module Management
     config.x.default_smtp_port = ENV.fetch('SMTP_PORT').to_i
     config.x.default_smtp_address = ENV.fetch('SMTP_ADDRESS')
     config.x.app_url = ENV.fetch('APP_URL')
+    config.x.default_asset_host = ENV.fetch('DEFAULT_ASSET_HOST')
   end
 end

@@ -68,6 +68,9 @@ Clone the project from github:
     user@host:~$ npm install -g maildev@latest
 ```
 
+> You will be able to view emails fired through the maildev UI by accessing [http://localhost:1080](http://localhost:1080)
+> after starting the services (whether using docker or with procfile).
+
 ### Redis
 
 ```
@@ -151,7 +154,7 @@ After that, create a bucket for development purposes:
 #### Start application
 
 ```
-    user@host:~$ OVERMIND_PROCFILE=Procfile.dev overmind s
+    user@host:~$ overmind s -f Procfile.dev
 ```
 
 ## Setup in development environment in container mode [Docker]
@@ -163,7 +166,8 @@ After that, create a bucket for development purposes:
 
 > Consider running docker without using sudo (with your default user) via this documentation. [documentation](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user)
 
-After that, edit `.env.development.local` and `.env.test.local` files with docker values if needed.
+| WARNING: **After that, edit `.env.development.local` and `.env.test.local` files with docker values if needed.** |
+| ---------------------------------------------------------------------------------------------------------------- |
 
 With that, we created an intermediate application container in order to make the first configurations. First, let's start a file upload server:
 
@@ -181,16 +185,20 @@ Now in another tab, let's set up a bucket for the file upload server:
     sh-4.4# exit
 ```
 
+> If error "mc: <ERROR> Unable to make bucket `minio-dev/development`. Your previous request to create > the named bucket succeeded and you already own it." occours when `mc mb minio-dev/development --region="br-east-1"` **just ignored it**.
+
 Now, Run the following commands below to add gems in cache volume, create a development/test database and kill containers to start all containers correctly:
 
 ```
     user@host:~$ docker compose build app
     user@host:~$ docker compose run app bash
     root@container-id:~$ bundle install
-    root@container-id:~$ bundle exec rake db:create db:migrate db:seed
+    root@container-id:~$ bundle exec rails db:create db:migrate db:seed
     root@container-id:~$ exit
     user@host:~$ docker rm -f $(docker ps -a -q)
 ```
+
+> Remove ~/.docker if happen this error "docker endpoint for "default" not found" and try again build app image (`docker compose build app`)
 
 #### Start application
 
@@ -198,11 +206,13 @@ Now, Run the following commands below to add gems in cache volume, create a deve
     user@host:~$ docker compose up
 ```
 
+### Run suite of tests
+
+```
+    user@host:~$ docker compose --env-file=".env.test.local" run --rm app bundle exec rake spec
+```
+
 ## Troubleshouting
-
-- "docker endpoint for "default" not found"
-
-> Remove ~/.docker if happen this error and try again build app image
 
 - "gem_name" is not yet checked out. Run `bundle install`
 

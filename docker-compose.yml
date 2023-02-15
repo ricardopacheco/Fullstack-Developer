@@ -66,23 +66,25 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - minio
       - database
+      - redis
       - maildev
+      - minio
     stdin_open: true
     env_file: .env.development.local
     tty: true
   worker:
     container_name: worker
-    image: management_app
+    image: management-app
     command: bundle exec sidekiq -C config/sidekiq.yml
     volumes:
       - ".:/usr/src/app"
       - gems-data:/usr/local/bundle
     depends_on:
-      - db
+      - database
       - redis
       - maildev
+      - minio
     env_file: .env.development.local
     tty: true
 
