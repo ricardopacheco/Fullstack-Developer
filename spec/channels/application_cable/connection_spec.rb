@@ -1,21 +1,28 @@
 # frozen_string_literal: true
 
+require 'rails_helper'
+
 RSpec.describe ApplicationCable::Connection do
-  context 'when user is not authenticated' do
+  let(:env) { instance_double('env') }
+  let(:warden) { instance_double('warden', user: user) }
+
+  before do
+    allow_any_instance_of(ActionCable::Connection::TestRequest).to receive(:env).and_return(env)
+    allow(env).to receive(:[]).with('warden').and_return(warden)
+  end
+
+  describe 'when user is not authenticated' do
+    let(:user) { instance_double(User, id: nil) }
+
     it 'rejects connection' do
       expect { connect '/cable' }.to have_rejected_connection
     end
   end
 
-  context 'when user is authenticated' do
+  describe 'when user is authenticated' do
     let(:user) { create(:user) }
 
-    before do
-      login_as(user)
-      cookies.signed[:user_id] = user.id
-
-      connect '/cable'
-    end
+    before { connect '/cable' }
 
     it 'successfully connects' do
       expect(connection.current_user).to eq(user)

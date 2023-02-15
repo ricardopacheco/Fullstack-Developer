@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-module ProfileContext
-  # This job is used to broadcast messages to current user profile when admin
-  # deletes user.
+module AdminContext
+  # This job is used to broadcast messages to all admins when a user is deleted.
   class DeleteUserBroadcastJob < ApplicationJob
     queue_as :broadcast
 
@@ -10,6 +9,11 @@ module ProfileContext
       ActionCable.server.broadcast(
         'AdminContextChannel',
         build_delete_data('ADMIN_DELETE_USER', user_id)
+      )
+
+      ActionCable.server.broadcast(
+        "ProfileContextChannel-#{user_id}",
+        build_delete_data('ADMIN_DELETE_YOUR_PROFILE', user_id)
       )
     end
   end

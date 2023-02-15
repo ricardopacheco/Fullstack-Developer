@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module AdminContext
-  # This job is used to broadcast messages to all admins when a new user is
-  # created.
+module ProfileContext
+  # This job is used to broadcast messages to inform admin when a new profile is
+  # registered.
   class CreateUserBroadcastJob < ApplicationJob
     queue_as :broadcast
 
@@ -11,7 +11,7 @@ module AdminContext
 
       ActionCable.server.broadcast(
         'AdminContextChannel',
-        build_message_data('ADMIN_CREATE_USER', user)
+        build_message_data('PROFILE_CREATE_USER', user)
       )
     end
   end

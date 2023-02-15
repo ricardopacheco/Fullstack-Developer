@@ -127,6 +127,14 @@ describe AdminContext::UpdateUserOperation, type: :operation do
           .from(user.email)
           .to(attributes[:email])
       end
+
+      it 'expect send broadcast event' do
+        expect do
+          operation
+        end.to(
+          have_enqueued_job(AdminContext::UpdateUserBroadcastJob).on_queue('broadcast')
+        )
+      end
     end
   end
 end

@@ -15,9 +15,13 @@ module ProfileContext
     def call(user_id, attributes)
       user = yield find_and_validate_user_profile(user_id)
       validated_attributes = yield validate_contract(ProfileContext::UpdateFieldsContract, attributes)
-      user = yield update_user_attributes(user, validated_attributes)
 
-      Success(user)
+      ActiveRecord::Base.transaction do
+        user = yield update_user_attributes(user, validated_attributes)
+        yield send_admin_context_update_user_broadcast(user.id)
+
+        Success(user)
+      end
     end
 
     private
@@ -26,6 +30,10 @@ module ProfileContext
       return Success(user) if user.update(attributes)
 
       Failure(user.errors.to_hash)
+    end
+
+    def send_admin_context_update_user_broadcast(user_id)
+      Success(ProfileContext::UpdateUserBroadcastJob.perform_later(user_id))
     end
   end
 end

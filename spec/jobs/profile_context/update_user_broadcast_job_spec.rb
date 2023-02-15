@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe AdminContext::CreateUserBroadcastJob do
+describe ProfileContext::UpdateUserBroadcastJob do
   describe '#perform' do
     context 'when user is founded on database' do
       let(:user) { create(:user) }

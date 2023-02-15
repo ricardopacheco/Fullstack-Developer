@@ -21,10 +21,14 @@ module AdminContext
       users = yield import_users_from_spreadsheet(xlsx_file)
 
       ActiveRecord::Base.transaction do
-        users.each { |user_attributes| yield create_user_operation(admin_id, user_attributes) }
+        @created_users = users.map do |user_attributes|
+          yield create_user_operation(admin_id, user_attributes)
+        end
+
+        yield send_admin_context_import_spreadsheet_broadcast(@created_users.map(&:id))
       end
 
-      Success(users.size)
+      Success(@created_users.size)
     end
 
     private
@@ -66,6 +70,10 @@ module AdminContext
       return true if MiniMime.lookup_by_filename(xlsx_file).extension == 'xlsx'
 
       false
+    end
+
+    def send_admin_context_import_spreadsheet_broadcast(user_ids)
+      Success(AdminContext::ImportSpreadsheetBroadcastJob.perform_later(user_ids))
     end
   end
 end

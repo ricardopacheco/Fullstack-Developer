@@ -21,7 +21,7 @@ describe ProfileContextChannel do
   describe 'when user is a profile' do
     before do
       stub_connection(current_user: user)
-      subscribe
+      subscribe(inbox: user.id)
     end
 
     it 'successfully subscribes in ProfileContextChannel' do

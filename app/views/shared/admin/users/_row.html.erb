@@ -1,0 +1,11 @@
+<tr data-user-id="<%= user.id %>">
+  <th scope="row"><%= link_to user.id, admin_user_path(user.id) %></th>
+  <td><%= user.fullname %></td>
+  <td><%= user.email %></td>
+  <td><%= user.badge_role %></td>
+  <td>
+    <%= user.link_to_edit %>
+    <%= user.link_to_convert %>
+    <%= user.link_to_delete %>
+  </td>
+</tr>

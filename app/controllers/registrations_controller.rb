@@ -2,6 +2,8 @@
 
 # This class provides methods for register new profile users.
 class RegistrationsController < ApplicationController
+  layout 'guest'
+
   def new
     @presenter = presenter_class.new(view_context, form_object: registration_form.new)
   end

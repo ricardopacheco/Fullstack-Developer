@@ -89,6 +89,14 @@ describe ProfileContext::CreateProfileUserOperation, type: :operation do
       it 'expect create a new profile user in database' do
         expect { operation }.to change(User.profile, :count).from(0).to(1)
       end
+
+      it 'expect send broadcast event' do
+        expect do
+          operation
+        end.to(
+          have_enqueued_job(ProfileContext::CreateUserBroadcastJob).on_queue('broadcast')
+        )
+      end
     end
   end
 end

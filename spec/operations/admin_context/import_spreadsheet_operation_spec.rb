@@ -124,6 +124,14 @@ describe AdminContext::ImportSpreadsheetOperation, type: :operation do
       it 'expect create users' do
         expect { operation }.to change(User, :count).from(1).to(3)
       end
+
+      it 'expect send broadcast event' do
+        expect do
+          operation
+        end.to(
+          have_enqueued_job(AdminContext::ImportSpreadsheetBroadcastJob).on_queue('broadcast')
+        )
+      end
     end
   end
 end

@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Administration</title>
+    <title>My profile</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= action_cable_meta_tag %>
 
     <%= stylesheet_link_tag "application" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag "profile", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body inbox-id="<%= current_user.id %>">
     <div class="container-fluid">
+      <%= render 'shared/profile/toast' %>
+
       <div id="admin-main-navbar" class="mt-1">
         <%= render 'shared/profile/navbar' %>
       </div>

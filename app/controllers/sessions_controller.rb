@@ -3,6 +3,8 @@
 # This class provides controller actions to manage user sessions. It provides
 # features such as login and logout.
 class SessionsController < ApplicationController
+  layout 'guest'
+
   def create
     session = session_class.new(session_params)
 

@@ -43,7 +43,7 @@ module Management
     config.x.rails_serve_static_files = ENV.fetch('RAILS_SERVE_STATIC_FILES')
     config.x.ci = ENV.fetch('CI')
     config.x.rails_log_to_stdout = ENV.fetch('RAILS_LOG_TO_STDOUT')
-    config.x.default_port = ENV.fetch('PORT')
+    config.x.default_port = ENV.fetch('DEFAULT_PORT')
     config.x.pidfile = ENV.fetch('PIDFILE')
     config.x.s3_access_key_id = ENV.fetch('S3_ACCESS_KEY')
     config.x.s3_access_key_secret = ENV.fetch('S3_ACCESS_KEY_SECRET')
@@ -54,5 +54,6 @@ module Management
     config.x.max_password_length = ENV.fetch('MAX_PASSWORD_LENGTH').to_i
     config.x.default_smtp_port = ENV.fetch('SMTP_PORT').to_i
     config.x.default_smtp_address = ENV.fetch('SMTP_ADDRESS')
+    config.x.app_url = ENV.fetch('APP_URL')
   end
 end

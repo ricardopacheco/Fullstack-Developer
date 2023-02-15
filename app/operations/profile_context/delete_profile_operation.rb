@@ -13,9 +13,18 @@ module ProfileContext
     end
 
     def call(user_id)
-      yield delete_user_on_database(user_id)
+      ActiveRecord::Base.transaction do
+        yield delete_user_on_database(user_id)
+        yield send_admin_context_delete_user_broadcast(user_id)
+      end
 
       Success(nil)
+    end
+
+    private
+
+    def send_admin_context_delete_user_broadcast(user_id)
+      Success(ProfileContext::DeleteUserBroadcastJob.perform_later(user_id))
     end
   end
 end

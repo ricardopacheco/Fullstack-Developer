@@ -5,7 +5,7 @@ class ProfileContextChannel < ApplicationCable::Channel
   before_subscribe :check_profile_user
 
   def subscribed
-    stream_from "ProfileContextChannel-#{current_user.id}"
+    stream_from "ProfileContextChannel-#{params[:inbox]}"
   end
 
   def unsubscribed

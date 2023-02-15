@@ -100,7 +100,7 @@ describe AdminContext::DeleteUserOperation, type: :operation do
         expect do
           operation
         end.to(
-          have_enqueued_job(ProfileContext::DeleteUserBroadcastJob)
+          have_enqueued_job(AdminContext::DeleteUserBroadcastJob)
             .with(user.id)
             .on_queue('broadcast')
         )

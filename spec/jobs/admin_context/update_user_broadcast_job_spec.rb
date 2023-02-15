@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe AdminContext::CreateUserBroadcastJob do
+describe AdminContext::UpdateUserBroadcastJob do
   describe '#perform' do
     context 'when user is founded on database' do
       let(:user) { create(:user) }
@@ -12,7 +12,7 @@ describe AdminContext::CreateUserBroadcastJob do
 
         described_class.perform_now(user.id)
 
-        expect(ActionCable.server).to have_received(:broadcast).once
+        expect(ActionCable.server).to have_received(:broadcast).twice
       end
     end
 

@@ -88,6 +88,14 @@ describe ProfileContext::DeleteProfileOperation, type: :operation do
       it 'expect delete a profile from database' do
         expect { operation }.to change(User.profile, :count).from(1).to(0)
       end
+
+      it 'expect send broadcast event' do
+        expect do
+          operation
+        end.to(
+          have_enqueued_job(ProfileContext::DeleteUserBroadcastJob).on_queue('broadcast')
+        )
+      end
     end
   end
 end

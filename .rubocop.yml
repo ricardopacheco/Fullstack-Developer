@@ -81,6 +81,10 @@ RSpec/NamedSubject:
   Enabled: false
 RSpec/NestedGroups:
   Max: 7
+RSpec/VerifiedDoubleReference:
+  Enabled: true
+  Exclude:
+    - "spec/channels/application_cable/connection_spec.rb"
 Style/AndOr:
   Enabled: false
 Style/Documentation:

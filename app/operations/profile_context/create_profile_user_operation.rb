@@ -17,8 +17,16 @@ module ProfileContext
 
       ActiveRecord::Base.transaction do
         user = yield create_user_on_database(validated_attributes)
+        yield send_admin_context_create_user_broadcast(user.id)
+
         Success(user)
       end
+    end
+
+    private
+
+    def send_admin_context_create_user_broadcast(user_id)
+      Success(ProfileContext::CreateUserBroadcastJob.perform_later(user_id))
     end
   end
 end

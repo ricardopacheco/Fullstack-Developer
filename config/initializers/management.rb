@@ -13,6 +13,10 @@ Rails.env.on(:development) do
     address: Rails.configuration.x.default_smtp_address,
     port: Rails.configuration.x.default_smtp_port
   }
+  config.action_cable.allowed_request_origins = [
+    "http://#{Rails.configuration.x.app_url}:#{Rails.configuration.x.default_port}"
+  ]
+  config.action_cable.url = "ws://#{Rails.configuration.x.app_url}:#{Rails.configuration.x.default_port}/cable"
 
   Faker::Config.locale = 'pt'
 end
@@ -20,6 +24,7 @@ end
 Rails.env.on(:test) do
   config.active_job.queue_adapter = :test
   config.action_mailer.delivery_method = :test
+  config.action_cable.url = "ws://#{Rails.configuration.x.app_url}:#{Rails.configuration.x.default_port}/cable"
   Faker::Config.locale = 'pt'
 end
 
@@ -29,6 +34,8 @@ Rails.env.on(:any) do
   config.i18n.available_locales = %i[en pt]
   config.i18n.default_locale = :pt
   config.i18n.fallbacks = %i[pt]
+
+  config.active_job.queue_adapter = :sidekiq
 
   config.generators do |g|
     g.test_framework :rspec

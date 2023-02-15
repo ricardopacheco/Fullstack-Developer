@@ -9,4 +9,46 @@ class ApplicationJob < ActiveJob::Base
 
   # Most jobs are safe to ignore if the underlying records are no longer available
   # discard_on ActiveJob::DeserializationError
+
+  protected
+
+  def build_message_data(event, user)
+    {
+      event: event,
+      payload: {
+        user: user.slice(:id, :fullname),
+        html: render_admin_html_user_row(user)
+      }
+    }
+  end
+
+  def build_import_data(event, users)
+    {
+      event: event,
+      payload: {
+        total: users.size,
+        html: users.each { |user| render_admin_html_user_row(user) }
+      }
+    }
+  end
+
+  def build_delete_data(event, user_id)
+    {
+      event: event,
+      payload: {
+        user_id: user_id
+      }
+    }
+  end
+
+  private
+
+  def render_admin_html_user_row(user)
+    user = AdminContext::UserDecorator.new(user, nil)
+
+    ApplicationController.render(
+      partial: 'shared/admin/users/row',
+      locals: { user: user }
+    )
+  end
 end
