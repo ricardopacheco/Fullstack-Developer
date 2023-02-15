@@ -6,7 +6,6 @@ const inboxId = document.body.getAttribute('inbox-id');
 consumer.subscriptions.create({ channel: `ProfileContextChannel`, inbox: inboxId },
   {
     connected() {
-      console.log(window.$)
       console.log(`Connected to ProfileContextChannel-${inboxId}`);
     },
     disconnect() {
@@ -25,11 +24,12 @@ consumer.subscriptions.create({ channel: `ProfileContextChannel`, inbox: inboxId
       }
     },
     adminDeleteAccount(payload) {
+      // This force logout the user
       window.location.replace('/');
 
     },
     adminUpdateAccount(payload) {
-      this.renderToast(`Admin updated your profile.`)
+      this.renderToast(`Admin atualizou o seu perfil`)
     },
 
     renderToast(message) {

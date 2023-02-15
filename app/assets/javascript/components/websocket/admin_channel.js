@@ -4,7 +4,6 @@ import consumer from './cable';
 consumer.subscriptions.create('AdminContextChannel',
   {
     connected() {
-      console.log(window.$)
       console.log("Connected to AdminContextChannel");
     },
     disconnect() {
@@ -39,49 +38,49 @@ consumer.subscriptions.create('AdminContextChannel',
     },
     adminCreateUser(payload) {
       const { user, html } = payload;
-      const message = `Admin created user ${user.fullname} with id ${user.id}.`;
+      const message = `Admin criou um novo usuário chamado ${user.fullname} com id ${user.id}.`;
 
       this.renderToast(message);
       this.addUserInTable(html);
     },
     profileCreateUser(payload) {
       const { user, html } = payload;
-      const message = `User ${user.fullname} has registered and has just created his profile.`;
+      const message = `Usuário ${user.fullname} se registrou e acaba de criar o seu perfil.`;
 
       this.renderToast(message);
       this.addUserInTable(html);
     },
     adminUpdateUser(payload) {
       const { user, html } = payload;
-      const message = `Admin updated user ${user.fullname} with id ${user.id}.`;
+      const message = `Admin atualizou o usuário ${user.fullname} com id ${user.id}.`;
 
       this.renderToast(message);
       this.updateUserInTable(user.id, html);
     },
     profileUpdateUser(payload) {
       const { user, html } = payload;
-      const message = `User ${user.fullname} with id ${user.id} updated his profile.`;
+      const message = `Usuário ${user.fullname} with id ${user.id} atualizou o seu perfil.`;
 
       this.renderToast(message);
       this.updateUserInTable(user.id, html);
     },
     adminDeleteUser(payload) {
       const { user_id } = payload;
-      const message = `User with id ${user_id} was removed by admin.`;
+      const message = `Usuário com id ${user_id} foi removido via admin.`;
 
       this.renderToast(message);
       this.removeUserFromTable(user_id);
     },
     profileDeleteUser(payload) {
       const { user_id } = payload;
-      const message = `User with id ${user_id} deleted your profile.`;
+      const message = `Usuário com id ${user_id} deletou o seu perfil.`;
 
       this.renderToast(message);
       this.removeUserFromTable(user_id);
     },
     importSpreadsheet(payload) {
       const { total, html } = payload;
-      const message = `${total} users were created by importing a spreadsheet.`;
+      const message = `${total} usuários foram criados por importação de panilha.`;
 
       this.renderToast(message);
       this.addUserInTable(html);

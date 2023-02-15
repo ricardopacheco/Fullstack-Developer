@@ -1,4 +1,4 @@
-<%= simple_form_for(form_object, url: registration_path, html: { id: 'new-registration' }) do |f| %>
+<%= simple_form_for(form_object, url: registration_path, html: { id: 'new-registration', class: 'with-avatar-upload' }) do |f| %>
   <% if f.object.errors[:base].present? %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence %>
   <% end %>
@@ -7,6 +7,8 @@
   <%= f.input :email, label: false %>
   <%= f.input :password, label: false %>
   <%= f.input :password_confirmation, label: false %>
-  <%= f.input :avatar_image, as: :file, label: false %>
+  <%= f.input :avatar_image, as: :file, label: false, input_html: { id: 'user_avatar_image', accept: 'image/png, image/jpeg, image/jpg' } %>
+  <%= f.input :avatar_image, as: :hidden, input_html: { id: 'user_avatar_image_hidden', value: {} } %>
+  <%= render 'shared/global/progress_bar' %>
   <%= f.button :submit, I18n.t('register', scope: 'simple_form.buttons'), class: 'w-100 btn btn-success btn-block' %>
 <% end %>

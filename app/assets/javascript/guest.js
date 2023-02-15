@@ -2,6 +2,8 @@
 import * as bootstrap from 'bootstrap'
 import '@fortawesome/fontawesome-free/js/all'
 
+import './components/upload/avatar'
+
 import Rails from '@rails/ujs'
 Rails.start();
 
