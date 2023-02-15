@@ -8,7 +8,7 @@ describe 'Registration', type: :feature do
   describe 'when profile data are invalid' do
     let(:user) { create(:user) }
 
-    it 'expect see welcome message' do
+    it 'expect see error messages' do
       within('#new-registration') do
         fill_in('user_email', with: '')
         fill_in('user_fullname', with: '')

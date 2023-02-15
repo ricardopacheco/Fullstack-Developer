@@ -110,6 +110,7 @@ describe AdminContext::CreateUserOperation, type: :operation do
     context 'when attributes are valid' do
       let(:admin_id) { admin_user_id }
       let(:attributes) { attributes_for(:user) }
+      let(:created_user) { User.admin.last }
 
       it 'expect operation return success' do
         expect(operation).to be_success

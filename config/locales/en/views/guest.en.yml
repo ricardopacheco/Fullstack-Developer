@@ -5,3 +5,4 @@ en:
       sign_up: "Sign Up"
       registration:
         title: "Create a profile"
+        create_password: "Create your new password"

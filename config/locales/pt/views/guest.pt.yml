@@ -5,3 +5,4 @@ pt:
       sign_up: "Registrar-se"
       registration:
         title: "Crie um perfil"
+        create_password: "Crie sua nova senha"

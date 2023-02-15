@@ -19,7 +19,6 @@ module GuestContext
 
     private
 
-    # Override method.
     def validate_authentication_contract(attributes)
       contract = GuestContext::AuthenticationContract.new.call(attributes)
 

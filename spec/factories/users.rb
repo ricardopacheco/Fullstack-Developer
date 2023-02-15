@@ -11,6 +11,10 @@ FactoryBot.define do
       role { :admin }
     end
 
+    trait :with_token do
+      token { SecureRandom.hex(20) }
+    end
+
     trait :with_upload_avatar do
       avatar_image do
         Rack::Test::UploadedFile.new(

@@ -49,5 +49,7 @@ Rails.application.routes.draw do
     post 'login', to: 'sessions#create'
     get 'register', to: 'registrations#new'
     post 'registration', to: 'registrations#create'
+    get 'create_password', to: 'registrations#create_password', as: :guest_create_password
+    post 'update_password', to: 'registrations#update_password', as: :guest_update_password
   end
 end

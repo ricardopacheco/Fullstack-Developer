@@ -23,3 +23,4 @@ pt:
       login: "Login"
       register: "Registrar-se"
       submit: "Enviar"
+      create_password: "Criar senha"

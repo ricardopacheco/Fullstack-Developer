@@ -9,6 +9,9 @@ Rails.env.on(:development) do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = {
+    host: "http://#{Rails.configuration.x.app_url}:#{Rails.configuration.x.default_port}"
+  }
   config.action_mailer.smtp_settings = {
     address: Rails.configuration.x.default_smtp_address,
     port: Rails.configuration.x.default_smtp_port
@@ -24,6 +27,9 @@ end
 Rails.env.on(:test) do
   config.active_job.queue_adapter = :test
   config.action_mailer.delivery_method = :test
+  config.action_mailer.default_url_options = {
+    host: "http://#{Rails.configuration.x.app_url}:#{Rails.configuration.x.default_port}"
+  }
   config.action_cable.url = "ws://#{Rails.configuration.x.app_url}:#{Rails.configuration.x.default_port}/cable"
   Faker::Config.locale = 'pt'
 end

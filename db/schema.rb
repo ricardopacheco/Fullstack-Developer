@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_06_143935) do
   create_table "users", force: :cascade do |t|
     t.citext "fullname", null: false
     t.string "email", null: false
+    t.string "token"
     t.string "encrypted_password", default: "", null: false
     t.jsonb "avatar_image_data", default: {}
     t.integer "role", default: 0, null: false
@@ -28,6 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_06_143935) do
     t.datetime "updated_at", null: false
     t.index ["email", "role"], name: "index_users_on_email_and_role"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["token"], name: "index_users_on_token", unique: true
   end
 
 end

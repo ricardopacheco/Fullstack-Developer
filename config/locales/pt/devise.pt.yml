@@ -51,11 +51,12 @@ pt:
       send_instructions: "Você receberá um e-mail com instruções de como desbloquear sua conta em alguns minutos."
       send_paranoid_instructions: "Se sua conta existir, você receberá um e-mail com instruções de como desbloqueá-la em alguns minutos."
       unlocked: "Sua conta foi desbloqueada com sucesso. Faça login para continuar."
-    errors:
+  errors:
     messages:
       already_confirmed: "já foi confirmado, tente entrar"
       confirmation_period_expired: "precisa ser confirmado dentro de %{period}, solicite um novo"
       expired: "expirou, solicite um novo"
+      token_not_found: "Token inválido ou não encontrado"
       not_found: "não encontrado"
       not_locked: "não estava trancado"
       not_saved:

@@ -20,4 +20,11 @@ class GuestContextPresenter < ApplicationPresenter
       locals: { form_object: @form_object }
     )
   end
+
+  def render_create_password_form
+    render_partial_path(
+      partial: 'shared/guest/create_password/form',
+      locals: { form_object: @form_object }
+    )
+  end
 end

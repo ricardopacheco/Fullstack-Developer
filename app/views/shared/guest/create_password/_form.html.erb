@@ -1,0 +1,10 @@
+<%= simple_form_for(form_object, url: guest_update_password_path, html: { id: 'registration-create-new-password' }) do |f| %>
+  <% if f.object.errors[:base].present? %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence %>
+  <% end %>
+
+  <%= f.input :token, as: :hidden %>
+  <%= f.input :password, label: false %>
+  <%= f.input :password_confirmation, label: false %>
+  <%= f.button :submit, I18n.t('create_password', scope: 'simple_form.buttons'), class: 'w-100 btn btn-success btn-block' %>
+<% end %>

@@ -15,7 +15,8 @@ module AdminContext
     def call(admin_id, attributes)
       yield find_and_validate_user_admin(admin_id)
       validated_attributes = yield validate_contract(AdminContext::CreateUserContract, attributes)
-      completed_attributes = yield add_random_password_to_attributes(validated_attributes)
+      attributes_with_random_pass = yield add_random_password_to_attributes(validated_attributes)
+      completed_attributes = yield add_token_to_attributes(attributes_with_random_pass)
 
       ActiveRecord::Base.transaction do
         @user = yield create_user_on_database(completed_attributes)
@@ -28,8 +29,16 @@ module AdminContext
 
     private
 
+    def add_token_to_attributes(attributes)
+      Success(attributes.merge!(token: generate_user_token))
+    end
+
     def send_admin_context_create_user_broadcast(user_id)
       Success(AdminContext::CreateUserBroadcastJob.perform_later(user_id))
+    end
+
+    def generate_user_token
+      SecureRandom.hex(10)
     end
   end
 end

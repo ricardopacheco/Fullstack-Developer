@@ -10,6 +10,8 @@ en:
   registrations:
     create:
       success: "Welcome! Your profile has been successfully created."
+    update_password:
+      success: "Your password has been successfully registered."
   sessions:
     create:
       success: "Signed in successfully."

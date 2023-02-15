@@ -10,6 +10,8 @@ pt:
   registrations:
     create:
       success: "Bem vindo! Seu perfil foi criado com sucesso."
+    update_password:
+      success: "Sua senha foi cadastrada com sucesso."
   sessions:
     create:
       success: "Login realizado com êxito!"

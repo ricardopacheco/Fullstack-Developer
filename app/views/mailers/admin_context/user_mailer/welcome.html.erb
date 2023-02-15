@@ -1,1 +1,5 @@
-Welcome <%= @user.fullname %>
+Welcome <%= @user.fullname %>.
+
+You need create a new password to access the system. Click on the link below to create your password.
+
+<%= link_to 'Create new password', guest_create_password_url(token: @user.token) %>

@@ -33,7 +33,6 @@ module ProfileContext
       h.link_to(
         I18n.t('views.profile.delete_profile'),
         r.profile_path,
-        method: :delete,
         id: 'profile-btn-delete',
         class: 'btn btn-outline-danger',
         data: { confirm: 'Are you sure? This action is irreversible' }
