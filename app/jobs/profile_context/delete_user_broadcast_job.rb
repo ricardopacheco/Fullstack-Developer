@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module ProfileContext
-  # This job is used to broadcast messages to current user profile when admin
-  # deletes user.
+  # This job is used to broadcast messages to inform admin when a current profile
+  # delete your account.
   class DeleteUserBroadcastJob < ApplicationJob
     queue_as :broadcast
 

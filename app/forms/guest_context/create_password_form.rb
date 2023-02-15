@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 module GuestContext
-  # Form class for create password. Receive data via html form and call operation.
+  # Form class to allow profile create your first password. Receive data via
+  # html form and call operation.
   class CreatePasswordForm < ApplicationForm
     attr_reader :user
     attr_accessor :token, :password, :password_confirmation

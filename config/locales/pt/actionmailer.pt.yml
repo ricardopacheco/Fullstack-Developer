@@ -3,5 +3,11 @@ pt:
     user_mailer:
       welcome:
         subject: "Parabéns %{fullname}, seja bem vindo a nossa plataforma."
+        body:
+          initial_message: "Olá %{fullname}"
+          message: "Você precisa criar uma nova senha para acessar o sistema. Clique no link abaixo para criar sua senha."
+          link_to_create_password: "Criar minha senha"
       delete:
         subject: "Seu perfil foi removido da nossa plataforma."
+        body:
+          message: "Sua conta foi removida. Por favor, entre em contato se precisar tirar dúvidas."

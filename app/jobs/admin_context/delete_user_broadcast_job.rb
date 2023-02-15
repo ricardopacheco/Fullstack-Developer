@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module AdminContext
-  # This job is used to broadcast messages to all admins when a user is deleted.
+  # This job is used to broadcast messages to all admins when a admin delete a user.
   class DeleteUserBroadcastJob < ApplicationJob
     queue_as :broadcast
 

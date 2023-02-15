@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module ProfileContext
-  # Form class for update password profile. Receive data via html form and
-  # call operation.
+  # Form class for user profile can update your current password profile.
+  # Receive data via html form and call operation.
   class UpdatePasswordForm < ApplicationForm
     attr_reader :user
     attr_accessor :current_password, :password, :password_confirmation

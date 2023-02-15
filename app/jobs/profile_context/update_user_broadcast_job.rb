@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module ProfileContext
-  # This job is used to broadcast messages to inform admin when current user
+  # This job is used to broadcast messages to inform admin when current profile
   # update his profile.
   class UpdateUserBroadcastJob < ApplicationJob
     queue_as :broadcast

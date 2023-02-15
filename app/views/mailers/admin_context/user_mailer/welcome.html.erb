@@ -1,5 +1,5 @@
-Welcome <%= @user.fullname %>.
+<%= I18n.t('admin_context.user_mailer.welcome.body.initial_message', fullname: @user.fullname) %>
 
-You need create a new password to access the system. Click on the link below to create your password.
+<%= I18n.t('admin_context.user_mailer.welcome.body.message') %>
 
-<%= link_to 'Create new password', guest_create_password_url(token: @user.token) %>
+<%= link_to I18n.t('admin_context.user_mailer.welcome.body.link_to_create_password'), guest_create_password_url(token: @user.token) %>

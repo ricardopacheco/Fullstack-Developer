@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 module ProfileContext
-  # This operation class provides provides a base operation to update current_user password.
+  # This operation class provides provides a base operation to allow current
+  # profile update your password. he operation is only accessible by current profile
   class UpdatePasswordOperation < OperationBase
     def self.call(user_id, attributes, &block)
       service = new.call(user_id, attributes)

@@ -3,5 +3,11 @@ en:
     user_mailer:
       welcome:
         subject: "Congratulations %{fullname}, welcome to your platform."
+        body:
+          initial_message: "Hi %{fullname}"
+          message: "You need create a new password to access the system. Click on the link below to create your password."
+          link_to_create_password: "Create my password"
       delete:
         subject: "Your profile was deleted from your platform."
+        body:
+          message: "Your account was removed. Please get in touch if you have any questions."

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module ProfileContext
-  # This operation class provides provides a base operation to delete a
-  # current_user profile user on database.
+  # This operation class provides a base operation to allow current profile delete
+  # directly your account. The operation is only accessible by current profile
   class DeleteProfileOperation < OperationBase
     def self.call(attributes, &block)
       service = new.call(attributes)

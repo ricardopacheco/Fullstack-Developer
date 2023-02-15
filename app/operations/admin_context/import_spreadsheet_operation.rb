@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module AdminContext
-  # This operation class provides provides a base operation to import users from
-  # a spreadsheet calling create user operation. The operation is only accessible
-  # by admin users.
+  # This operation class provides a base operation when a admin create users calling
+  # create user operationthrough import a spreadsheet. The operation is only
+  # accessible by admin users.
   class ImportSpreadsheetOperation < OperationBase
     I18N_SCOPE = 'operations.admin_context.import_spreadsheet_operation'
 

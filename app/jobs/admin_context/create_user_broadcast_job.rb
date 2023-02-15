@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 module AdminContext
-  # This job is used to broadcast messages to all admins when a new user is
-  # created.
+  # This job is used to broadcast messages to all admins when a admin create a user.
   class CreateUserBroadcastJob < ApplicationJob
     queue_as :broadcast
 

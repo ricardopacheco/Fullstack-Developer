@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 module ProfileContext
-  # This class provides a layer of data validation for creating users of profile kind.
+  # This class provides a layer of data validation for creating users of profile
+  # kind.
   class CreateProfileUserContract < ApplicationContract
     # :reek:DuplicateCode
     option :user_repo, default: proc { ::User }

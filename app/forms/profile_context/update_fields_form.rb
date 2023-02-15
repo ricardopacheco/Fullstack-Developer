@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 module ProfileContext
-  # Form class for update profile. Receive data via html form and call operation.
+  # Form class for user update your profile. Receive data via html form and call
+  # operation.
   class UpdateFieldsForm < ApplicationForm
     attr_reader :user
     attr_accessor :email, :fullname, :avatar_image

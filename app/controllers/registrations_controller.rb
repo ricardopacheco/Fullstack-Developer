@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-# This class provides methods for register new profile users.
+# This class provides methods for register new profile users and create your
+# passwords
 class RegistrationsController < ApplicationController
   layout 'guest'
 

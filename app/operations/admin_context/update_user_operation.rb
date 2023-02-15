@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module AdminContext
-  # This operation class provides provides a base operation to update user
-  # attributes in database.
+  # This operation class provides a base operation when a admin updates a user
+  # in database. The operation is only accessible by admin users.
   class UpdateUserOperation < OperationBase
     def self.call(admin_id, user_id, attributes, &block)
       service = new.call(admin_id, user_id, attributes)

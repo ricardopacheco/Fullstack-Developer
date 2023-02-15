@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module AdminContext
-  # This operation class provides provides a base operation to convert a profile
-  # user in a admin user. The operation is only accessible by admin users.
+  # This operation class provides a base operation to convert a profile user in
+  # a admin user. The operation is only accessible by admin users.
   class UserUpOperation < OperationBase
     def self.call(admin_id, user_id, &block)
       service = new.call(admin_id, user_id)

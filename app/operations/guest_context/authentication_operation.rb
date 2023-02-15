@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module GuestContext
-  # This operation class provides provides a base operation to authenticate users.
+  # This operation class provides a base operation to authenticate users.
   class AuthenticationOperation < OperationBase
     def self.call(attributes, &block)
       service = new.call(attributes)

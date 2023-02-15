@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module ProfileContext
-  # This operation class provides provides a base operation to create a new
-  # profile user on database. The operation is only accessible by admin users.
+  # This operation class provides a base operation to register new profiles on
+  # database. The operation is only accessible by admin users.
   class CreateProfileUserOperation < OperationBase
     def self.call(attributes, &block)
       service = new.call(attributes)

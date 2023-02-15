@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 module GuestContext
-  # This class provides a layer of data validation for create new password for users.
+  # This class provides a layer of data validation for users creating your first
+  # password.
   class CreatePasswordContract < ApplicationContract
     option :user_repo, default: proc { ::User }
 

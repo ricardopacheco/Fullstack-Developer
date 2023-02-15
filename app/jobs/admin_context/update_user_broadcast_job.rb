@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module AdminContext
-  # This job is used to broadcast messages to all admins when a user is updated.
+  # This job is used to broadcast messages to all admins when admin updates a user.
   class UpdateUserBroadcastJob < ApplicationJob
     queue_as :broadcast
 

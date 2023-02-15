@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module AdminContext
-  # This operation class provides provides a base operation to delete a user
-  # on database. The operation is only accessible by admin users.
+  # This operation class provides a base operation when a admin deletes a user
+  # from database. The operation is only accessible by admin users.
   class DeleteUserOperation < OperationBase
     def self.call(admin_id, attributes, &block)
       service = new.call(admin_id, attributes)

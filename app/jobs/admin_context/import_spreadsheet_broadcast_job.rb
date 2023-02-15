@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module AdminContext
-  # This job is used to broadcast messages to all admins when a admin imports a
-  # spreadsheet.
+  # This job is used to broadcast messages to all admins when create users importing
+  # a spreadsheet.
   class ImportSpreadsheetBroadcastJob < ApplicationJob
     queue_as :broadcast
 

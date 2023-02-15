@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module AdminContext
-  # Form class to allow admin create a new user. Receive data via html form
-  # and call operation.
+  # Form class to allow admin create a new user. Receive data via html form and
+  # call operation.
   class CreateUserForm < ApplicationForm
     attr_reader :user
     attr_accessor :email, :fullname, :avatar_image

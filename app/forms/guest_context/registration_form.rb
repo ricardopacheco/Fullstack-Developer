@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 module GuestContext
-  # Form class for login. Receive data via html form and call operation.
+  # Form class for register user profiles. Receive data via html form and call
+  # operation.
   class RegistrationForm < ApplicationForm
     attr_reader :user
     attr_accessor :fullname, :email, :password, :password_confirmation, :avatar_image

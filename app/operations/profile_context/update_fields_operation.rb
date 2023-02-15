@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 module ProfileContext
-  # This operation class provides provides a base operation to update a profile
-  # attributes in database.
+  # This operation class provides a base operation to allow current profile update
+  # some attributes from your profile in database. The operation is only accessible
+  # by current profile
   class UpdateFieldsOperation < OperationBase
     def self.call(user_id, attributes, &block)
       service = new.call(user_id, attributes)
