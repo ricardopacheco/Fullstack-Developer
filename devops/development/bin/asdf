@@ -1,0 +1,58 @@
+#!/bin/zsh
+
+# Check if asdf is installed
+if ! command -v asdf &> /dev/null
+then
+  echo "[bin/asdf] Please install ASDF and add it to the path prior to running this script."
+  exit 1
+fi
+
+# Get the directory of the script
+SCRIPT_DIR="$( cd "$( dirname "${(%):-%N}" )" &> /dev/null && pwd )"
+GEMFILE="$SCRIPT_DIR/../Gemfile"
+
+# Read .tool-versions file and store in a key/value variable
+declare -A plugin_versions
+while IFS= read -r line || [[ -n "$line" ]]; do
+  plugin=$(echo "$line" | awk '{print $1}')
+  version=$(echo "$line" | awk '{print $2}')
+  plugin_versions[$plugin]=$version
+done < .tool-versions
+
+# Display the stored values
+for plugin version in "${(@kv)plugin_versions}"; do
+  # Check if plugin is installed
+  if asdf list "$plugin" | grep -q "${plugin_versions[$plugin]}"
+  then
+    echo "[bin/asdf] $plugin $version is already installed!"
+  else
+    echo "[bin/asdf] Installing $plugin version $version"
+
+    # Install plugin
+    asdf plugin add "$plugin"
+    asdf install "$plugin" "${plugin_versions[$plugin]}"
+
+    # If the plugin is postgres, we need to recreate the initial cluster so that it uses the
+    # default settings and recreates the shims for the current version of a package.
+    if [ "$plugin" = "postgres" ]; then
+      rm -rf $HOME/.asdf/installs/postgres/${plugin_versions[$plugin]}/data
+      initdb -D $HOME/.asdf/installs/postgres/${plugin_versions[$plugin]}/data -U postgres
+      asdf reshim $plugin
+
+      # For this works, the plugin ruby already needs to be installed
+      # Install pg gem with the correct version and the correct pg_config
+      gem_name=$(awk '/gem "pg"/{print $2}' "$GEMFILE" | tr -d '"'| sed 's/,//')
+      gem_version=$(awk '/gem "pg"/{print $NF}' "$GEMFILE" | tr -d '"')
+
+      gem install $gem_name -v $gem_version --verbose -- --with-pg-config=$HOME/.asdf/installs/postgres/${plugin_versions[$plugin]}/bin/pg_config
+    fi
+
+    if [ "$plugin" = "nodejs" ]; then
+      npm install npm@9.6.6 -g
+    fi
+
+    if [ "$plugin" = "ruby" ]; then
+      bundle install
+    fi
+  fi
+done

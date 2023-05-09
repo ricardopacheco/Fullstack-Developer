@@ -18,7 +18,7 @@ RUN echo 'gem: --no-rdoc --no-ri' >> $HOME/.gemrc
 
 RUN curl -sL https://deb.nodesource.com/setup_19.x | bash -
 RUN apt-get install -y nodejs
-RUN npm install npm@9.4.0 -g
+RUN npm install npm@9.6.6 -g
 RUN npm install yarn@1.22.19 -g
 
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

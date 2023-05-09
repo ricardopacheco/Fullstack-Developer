@@ -59,6 +59,7 @@ services:
   app:
     container_name: app
     build: .
+    image: management_app
     command: bundle exec puma -C ./config/puma.rb
     volumes:
       - ".:/usr/src/app"
@@ -70,12 +71,25 @@ services:
       - redis
       - maildev
       - minio
-    stdin_open: true
+      - frontend
     env_file: .env.development.local
     tty: true
+    stdin_open: true
+  frontend:
+    container_name: frontend
+    image: management_app
+    environment:
+      HOST: app
+      PORT: 3001
+    command: bash -c "yarn build --watch & yarn build:css --watch"
+    volumes:
+      - ".:/usr/src/app"
+    env_file: .env.development.local
+    tty: true
+    stdin_open: true
   worker:
     container_name: worker
-    image: management-app
+    image: management_app
     command: bundle exec sidekiq -C config/sidekiq.yml
     volumes:
       - ".:/usr/src/app"
@@ -94,4 +108,3 @@ networks:
     driver: bridge
     driver_opts:
       com.docker.network.bridge.name: management
-    external: true

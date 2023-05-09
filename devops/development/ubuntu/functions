@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+function install_essential_packages {
+  echo "Install essential packages"
+
+  APTFILE="Aptfile"
+  sudo apt update
+  sudo apt install -y $(awk '!/^ *#/ && NF > 0' "$APTFILE")
+}

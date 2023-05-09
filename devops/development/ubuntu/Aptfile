@@ -1,0 +1,35 @@
+# Nokogiri dependencies
+
+zlib1g-dev
+liblzma-dev
+patch
+pkg-config
+libxml2-dev
+libxslt-dev
+
+# Shrine dependency
+
+imagemagick
+
+# PostgreSQL dependencies
+
+build-essential
+libssl-dev
+libreadline-dev
+zlib1g-dev
+libcurl4-openssl-dev
+
+# Ruby dependencies
+
+autoconf
+bison
+build-essential
+libssl-dev
+libyaml-dev
+libreadline6-dev
+zlib1g-dev
+libncurses5-dev
+libffi-dev
+libgdbm6
+libgdbm-dev
+libdb-dev
