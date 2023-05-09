@@ -1,0 +1,34 @@
+#!/bin/zsh
+
+if ! command -v zsh &> /dev/null; then
+  echo "Zsh is not installed. Please install zsh and try again."
+  exit 1
+fi
+
+source devops/development/shared/functions
+
+case "$OSTYPE" in
+  linux-gnu*)
+    if ! grep -q "Ubuntu" /etc/os-release; then
+      echo "Ubuntu operating system detected"
+
+      source devops/development/ubuntu/functions
+
+      install_essential_packages
+      source $PWD/devops/development/bin/asdf
+      install_tmux
+      install_procfile_manager
+      install_minio_server
+      add_overcommit_hooks
+      install_development_mail_service
+      install_specified_yarn_version
+    else
+      echo "This setup only supports Ubuntu 22.04 as described in the README. You can run the project normally, but you will have to manually install the required packages according to your distribution."
+      exit 0
+    fi
+    ;;
+  *)
+    echo "Unsupported operating system"
+    exit 1
+    ;;
+esac

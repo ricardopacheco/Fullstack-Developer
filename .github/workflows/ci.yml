@@ -1,0 +1,31 @@
+name: Tests
+
+on:
+  pull_request:
+    branches:
+      - "*"
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # This is a workaround for overriding containers. As by default the
+      # environment is development and the containers read the .env file,
+      # here we keep the default but for CI we use the test env.
+      - name: Replace defaulf environment variables
+        run: |
+          cp lib/templates/.env.test.template .env.development.local
+      - name: Build and run containers
+        run: docker-compose build app
+      - name: Prepare database and run migrations
+        run: docker-compose run app rails db:create db:migrate
+      - name: Running suite of tests
+        env:
+          CI: true
+        run: docker-compose run app bundle exec rails spec
+      - name: Stop containers
+        run: docker-compose down

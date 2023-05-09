@@ -1,0 +1,74 @@
+#!/bin/zsh
+
+function install_tmux {
+  sudo apt install tmux
+}
+
+function install_procfile_manager {
+  echo "
+    We are going to use overmind to manage processes via Procfile.
+    Feel free to use any other you like."
+
+  # check if golang is already installed
+  if ! command -v go &> /dev/null; then
+    echo "Go is required to install Minio. Exiting script."
+    exit 1
+  else
+    echo "$(go version) installed"
+  fi
+
+  go install github.com/DarthSim/overmind/v2@latest
+
+  if command -v asdf &> /dev/null; then
+    asdf reshim golang
+  fi
+}
+
+function install_minio_server {
+  # check if golang is already installed
+  if ! command -v go &> /dev/null; then
+    echo "Go is required to install Minio. Exiting script."
+    exit 1
+  else
+    echo "$(go version) installed"
+  fi
+
+  go install github.com/minio/minio@latest
+  go install github.com/minio/mc@latest
+  mkdir $HOME/buckets/management
+
+  if command -v asdf &> /dev/null; then
+    asdf reshim golang
+  fi
+}
+
+function add_overcommit_hooks {
+  # check if overcommit is already installed
+  if ! command -v overcommit &> /dev/null; then
+    echo "Overcommit is not installed. Please install Overcommit with bundle install and try again."
+    exit 1
+  else
+    echo "Install git hooks. We use git hooks to do code checking to avoid bad commits."
+
+    overcommit --install
+    overcommit --sign
+    overcommit --sign pre-commit
+    overcommit --sign post-commit
+  fi
+}
+
+function install_development_mail_service {
+  # check if npm is already installed
+  if ! command -v npm &> /dev/null; then
+    echo "Npm is not installed. Please install nodejs and try again."
+    exit 1
+  else
+    echo "Install git hooks. We use git hooks to do code checking to avoid bad commits."
+
+    npm install -g maildev@latest
+  fi
+}
+
+function install_specified_yarn_version {
+  npm install -g yarn@1.22.19
+}
